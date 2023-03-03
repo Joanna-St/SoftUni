@@ -1,0 +1,110 @@
+﻿body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(238, 238, 238);
+  margin: 50px 100px;
+  line-height: 1.6;
+}
+
+main {
+  display: inline-block;
+  width: 70%;
+}
+
+.header__main {
+  position: relative;
+  border-bottom: 2px solid black;
+}
+
+.header__main * {
+  display: inline-block;
+}
+
+.header__main p {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.header__main ul {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.header__main li {
+  color: rgb(0, 102, 0);
+  padding-left: 15px;
+}
+
+h1,
+h3 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-size: xx-large;
+}
+
+h3 {
+  font-size: x-large;
+  margin: 20px 0 5px 0;
+}
+
+img {
+  border: 3px solid black;
+  padding: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.25);
+}
+
+.img_1 {
+  display: inline;
+  float: right;
+  margin-left: 20px;
+}
+
+.img_2 {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+}
+
+aside {
+  display: inline;
+  float: right;
+  width: 25%;
+  margin-left: 10px;
+}
+
+aside ul {
+  margin: 0;
+  list-style-type: square;
+}
+
+aside a {
+  color: rgb(7, 156, 20);
+  text-decoration: none;
+}
+
+div {
+  display: grid;
+  grid-template-areas: "paragraph quote";
+}
+
+div p {
+  grid-area: paragraph;
+  padding-right: 30px;
+}
+
+blockquote {
+  grid-area: quote;
+  margin: 0;
+  border-left: 5px solid lightgray;
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: rgb(100, 100, 100);
+  padding-left: 30px;
+}
+
+blockquote p:nth-child(2) {
+  text-align: right;
+}

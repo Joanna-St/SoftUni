@@ -112,3 +112,8 @@ dist
 *.ppt
 *.pptx
 *.zip
+screenshot*
+*.txt
+*png
+*.jpg
+*.jpeg

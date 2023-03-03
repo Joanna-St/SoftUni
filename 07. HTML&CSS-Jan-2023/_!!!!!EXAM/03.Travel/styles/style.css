@@ -1,0 +1,158 @@
+﻿body {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn{
+    border-radius: 50px;
+}
+
+/* HEADER */
+
+header {
+  height: 80vh;
+  background-image: url("../images/landing-photo.jpg");
+  background-position: center;
+  background-size: 100%;
+  position: relative;
+}
+
+.explore-btn {
+  border: none;
+  background-color: #370511;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 2rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5vh 20%;
+}
+
+.navbar-logo {
+  font-size: 2rem;
+  margin-right: 30%;
+}
+
+.section-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+  padding: 0;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.hero-intro {
+  margin: 15vh 20%;
+}
+
+.hero-intro h1 {
+  font-size: 3.5rem;
+}
+
+.hero-intro h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 2rem;
+}
+
+.hero-intro p {
+  font-size: 1.2rem;
+}
+
+.hero-intro button {
+  margin-top: 1.5rem;
+}
+
+/* MAIN */
+
+main{
+    text-align: center;
+    margin-top: 5vh;
+    padding: 0 18%;
+}
+
+main > h2{
+    font-size: 2rem;
+}
+
+main > p{
+    font-size: 1.2rem;
+}
+
+.famous-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 5%;
+}
+
+.card{
+    height: 65vh;
+    width: 30%;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 3vh 0;
+}
+
+.card img{
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card h3{
+    font-size: 1.7rem;
+    margin: 1rem 0;
+}
+
+.card p{
+    text-align: left;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+}
+
+.discover-btn{
+    border-width: 1px;
+    background-color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+}
+
+/* FOOTER */
+
+footer{
+    height: 30vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 18%;
+    gap: 5%;
+}
+
+.footer-logo{
+    font-size: 2.5rem;
+    margin-right: 10%;
+}
+
+.footer-list{
+    font-size: 1.3rem;
+    line-height: 3rem;
+}
+
+.social{
+    font-size: 1.3rem;
+    line-height: 3rem;
+    margin-left: 10%;
+}
+
+.social-icons{
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+}

@@ -1,0 +1,55 @@
+﻿*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    padding-top: 15vh;
+}
+
+div,section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+div{
+    max-width: 65vw;
+    height: 65vh;
+    margin: auto;
+}
+
+span{
+    border: 1px solid black;
+}
+
+.week span{
+    height: 25%;
+    flex-grow: 1;
+    flex-basis: 0;
+    padding-top: 4%;
+    font-size: 0.8em;
+}
+
+.week span:nth-child(1){
+    font-size: 1em;
+    flex-basis: 100%;
+}
+
+.week span:nth-child(7){
+    font-size: 1em;
+    flex-basis: 100%;
+}
+
+.notes{
+    flex-direction: column;
+    width: 18%;
+}
+
+.notes span{
+    height: 50%;
+    padding-top: 2%;
+}

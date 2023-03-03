@@ -1,0 +1,12 @@
+﻿span:hover{
+    background-color: paleturquoise;
+    color: maroon;
+}
+
+span::selection{
+    background-color: darkslategray;
+}
+p{
+    font-size: larger;
+    width: 700px;
+}

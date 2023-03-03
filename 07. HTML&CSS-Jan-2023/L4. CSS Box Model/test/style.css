@@ -1,0 +1,13 @@
+﻿span{
+    display: inline-block
+}
+
+p{
+    margin: 0%;
+    margin-left: 10px;
+}
+
+input{
+    display: block;
+    margin: 10px;
+}
