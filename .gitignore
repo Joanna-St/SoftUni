@@ -106,6 +106,7 @@ dist
 # Misc.
 *.dox
 *.docx
+*.docx#
 *.xls
 *.xlsx
 *.pdf
