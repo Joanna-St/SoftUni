@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Forecaster</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div id="content">
+        <div id="request">
+            <input id="location" class='bl' type="text">
+            <input id="submit" class="bl" type="button" value="Get Weather">
+        </div>
+        <div id="forecast" style="display:block">
+            <div id="current">
+                <div class="label">Current conditions</div>
+                <div class="forecasts">
+                    <span class="symbol">&#x2600</span>
+                    <ul class="condition" style="list-style-type: none;">
+                        <li>NY, USA</li>
+                        <li>8&#176/19</li>
+                        <li>Sunny</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="upcoming">
+                <div class="label">Three-day forecast</div>
+                <div class="forecast-info">
+                    <ul style="list-style-type: none;">
+                        <li class="upcoming">
+                            <span class="symbol">&#x2600</span>
+                            <p>8/19 <br>
+                            Sunny</p>
+                        </li>
+                        <li class="upcoming">
+                            <span class="symbol">&#x2600</span>
+                            <p>8/19</p>
+                            <p>Sunny</p>
+                        </li>
+                        <li class="upcoming">
+                            <span class="symbol">&#x2600</span>
+                            <p>8/19</p>
+                            <p>Sunny</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
