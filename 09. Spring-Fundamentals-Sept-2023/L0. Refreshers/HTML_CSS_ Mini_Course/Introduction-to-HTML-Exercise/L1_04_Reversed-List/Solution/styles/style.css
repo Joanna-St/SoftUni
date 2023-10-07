@@ -1,0 +1,25 @@
+body{
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+main{
+    background-color: #e6e5e5;
+    padding: 4rem 2rem;
+}
+
+h3{
+    text-align: center;
+    font: 1em sans-serif;
+    font-weight: bold;
+    color: #234465;
+    margin-bottom: 1.5rem;
+}
+
+li{
+    border-bottom: 1px solid black;
+    padding-right: 5rem;
+}

@@ -1,0 +1,29 @@
+body{
+    font-family: sans-serif;
+}
+
+nav{
+    background-color: #d3d3d3;
+    font-family: sans-serif;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 1rem 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+a{
+    text-decoration: none;
+    color: #009900;
+}
+
+li a:hover{
+    color: white;
+    background-color: #009900;
+    border-radius: 4px;
+    padding: 0.5rem 2rem;
+}
