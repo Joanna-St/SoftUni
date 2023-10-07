@@ -118,3 +118,49 @@ screenshot*
 *png
 *.jpg
 *.jpeg
+
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+09. Spring-Fundamentals-Sept-2023/mobilele/gradle/wrapper/gradle-wrapper.jar
+09. Spring-Fundamentals-Sept-2023/mobilele/gradle/wrapper/gradle-wrapper.properties
+09. Spring-Fundamentals-Sept-2023/mobilele/build.gradle
+09. Spring-Fundamentals-Sept-2023/mobilele/gradlew
+09. Spring-Fundamentals-Sept-2023/mobilele/gradlew.bat
+09. Spring-Fundamentals-Sept-2023/mobilele/settings.gradle
+09. Spring-Fundamentals-Sept-2023/mobilele/src/main/resources/application.yaml
