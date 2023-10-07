@@ -156,11 +156,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-09. Spring-Fundamentals-Sept-2023/mobilele/gradle/wrapper/gradle-wrapper.jar
-09. Spring-Fundamentals-Sept-2023/mobilele/gradle/wrapper/gradle-wrapper.properties
-09. Spring-Fundamentals-Sept-2023/mobilele/build.gradle
-09. Spring-Fundamentals-Sept-2023/mobilele/gradlew
-09. Spring-Fundamentals-Sept-2023/mobilele/gradlew.bat
-09. Spring-Fundamentals-Sept-2023/mobilele/settings.gradle
-09. Spring-Fundamentals-Sept-2023/mobilele/src/main/resources/application.yaml
