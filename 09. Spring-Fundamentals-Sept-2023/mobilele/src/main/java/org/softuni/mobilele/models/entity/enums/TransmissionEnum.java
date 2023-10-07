@@ -1,4 +1,4 @@
-package org.softuni.mobilele.models.enums;
+package org.softuni.mobilele.models.entity.enums;
 
 public enum TransmissionEnum {
     MANUAL, AUTOMATIC

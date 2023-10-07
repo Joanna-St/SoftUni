@@ -1,10 +1,10 @@
-package org.softuni.mobilele.models;
+package org.softuni.mobilele.models.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.softuni.mobilele.models.enums.UserRoleEnum;
+import org.softuni.mobilele.models.entity.enums.UserRoleEnum;
 
 @Getter
 @Setter

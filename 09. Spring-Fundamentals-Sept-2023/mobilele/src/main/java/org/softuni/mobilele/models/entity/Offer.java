@@ -1,11 +1,11 @@
-package org.softuni.mobilele.models;
+package org.softuni.mobilele.models.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.softuni.mobilele.models.enums.EngineEnum;
-import org.softuni.mobilele.models.enums.TransmissionEnum;
+import org.softuni.mobilele.models.entity.enums.EngineEnum;
+import org.softuni.mobilele.models.entity.enums.TransmissionEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -21,7 +21,7 @@ public class Offer extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EngineEnum engine;
-    @Column(name = "image_url", nullable = false)
+    @Column(name = "image_url")
     private String imageUrl;
     @Column(nullable = false)
     private Integer mileage;

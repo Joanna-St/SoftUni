@@ -1,10 +1,10 @@
-package org.softuni.mobilele.models;
+package org.softuni.mobilele.models.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.softuni.mobilele.models.enums.CarCategoryEnum;
+import org.softuni.mobilele.models.entity.enums.CarCategoryEnum;
 
 import java.time.LocalDateTime;
 
@@ -19,11 +19,11 @@ public class Model extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CarCategoryEnum category;
-    @Column(name = "image_url", nullable = false, length = 512)
+    @Column(name = "image_url", length = 512)
     private String imageUrl;
     @Column(nullable = false)
     private Integer startYear;
-    @Column(nullable = false)
+    @Column
     private Integer endYear;
     @Column(nullable = false)
     private LocalDateTime created;

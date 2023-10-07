@@ -1,4 +1,4 @@
-package org.softuni.mobilele.models;
+package org.softuni.mobilele.models.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String username;
     @Column(nullable = false)
     private String password;
@@ -28,7 +28,7 @@ public class User extends BaseEntity {
     private boolean isActive;
     @ManyToOne
     private UserRole role;
-    @Column(name = "image_url", nullable = false)
+    @Column(name = "image_url")
     private String imageUrl;
     @Column(nullable = false)
     private LocalDateTime created;
