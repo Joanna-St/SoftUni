@@ -25,12 +25,11 @@ public class User extends BaseEntity {
     private String username;
 
     @NotBlank
-    @Size(min = 3, max = 20)
     @Column(nullable = false)
     private String password;
 
     @Email
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @OneToMany(targetEntity = Offer.class, mappedBy = "created")
