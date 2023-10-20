@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
     private CurrentUser currentUser;
+
     @GetMapping("")
     public String index(Model model) {
         if (currentUser.isLogged()) {

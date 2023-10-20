@@ -4,6 +4,8 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.softuni.resellerApp.model.dto.OfferDTO;
 import org.softuni.resellerApp.model.entity.Offer;
+import org.softuni.resellerApp.model.enums.ConditionEnum;
+import org.softuni.resellerApp.repository.ConditionRepository;
 import org.softuni.resellerApp.repository.OfferRepository;
 import org.softuni.resellerApp.repository.UserRepository;
 import org.softuni.resellerApp.service.OfferService;
@@ -17,36 +19,58 @@ import java.util.List;
 public class OfferServiceImpl implements OfferService {
     private final OfferRepository offerRepository;
     private final UserRepository userRepository;
+    private final ConditionRepository conditionRepository;
     private final CurrentUser currentUser;
+
     @Override
-    public List<OfferDTO> getAllOtherOffers() {
-        return offerRepository.findAllAvailableAndNotByUser(currentUser.getId())
-                .stream()
-                .map(this::map)
-                .toList();
+    public List<Offer> getAllOtherOffers() {
+        return offerRepository.findAllAvailableAndNotByUser(currentUser.getId());
     }
 
     @Override
-    public List<OfferDTO> getUserOffers() {
-        return userRepository.getUserById(currentUser.getId()).getOffers()
-                .stream()
-                .map(this::map)
-                .toList();
+    public List<Offer> getUserOffers() {
+        return userRepository.getUserById(currentUser.getId()).getOffers();
     }
 
     @Override
     @Transactional
-    public List<OfferDTO> getUserBoughtOffers() {
-        return userRepository.getUserById(currentUser.getId()).getBoughtOffers()
-                .stream()
-                .map(this::map)
-                .toList();
+    public List<Offer> getUserBoughtOffers() {
+        return userRepository.getUserById(currentUser.getId()).getBoughtOffers();
     }
 
-    private OfferDTO map(Offer offer) {
+    @Override
+    public void addOffer(OfferDTO offerDTO) {
+        offerRepository.save(mapNew(offerDTO));
+    }
+
+    @Override
+    public void buyOffer(Long id) {
+        Offer toBuy = offerRepository.findById(id).get();
+        toBuy.setBought(userRepository.getUserById(currentUser.getId()));
+        toBuy.setCreated(null);
+        offerRepository.save(toBuy);
+    }
+
+    @Override
+    public void deleteOffer(Long id) {
+        offerRepository.delete(offerRepository.findById(id).get());
+    }
+
+    private OfferDTO mapNew(Offer offer) {
         return new OfferDTO(offer.getDescription(),
                 offer.getPrice(),
-                offer.getCondition(),
+                offer.getCondition().getConditionName().name(),
                 offer.getCreated());
+    }
+
+    private Offer mapNew(OfferDTO offerDTO) {
+        Offer newOffer = new Offer();
+        newOffer.setDescription(offerDTO.description());
+        newOffer.setPrice(offerDTO.price());
+        newOffer.setCondition(conditionRepository.getConditionByConditionName(ConditionEnum.valueOf(offerDTO.condition())));
+        newOffer.setCreated(userRepository.getUserById(currentUser.getId()));
+        newOffer.setBought(null);
+
+        return newOffer;
     }
 }

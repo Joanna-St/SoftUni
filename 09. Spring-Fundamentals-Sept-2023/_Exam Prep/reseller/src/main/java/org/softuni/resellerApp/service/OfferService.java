@@ -1,13 +1,20 @@
 package org.softuni.resellerApp.service;
 
 import org.softuni.resellerApp.model.dto.OfferDTO;
+import org.softuni.resellerApp.model.entity.Offer;
 
 import java.util.List;
 
 public interface OfferService {
-    List<OfferDTO> getAllOtherOffers();
+    List<Offer> getAllOtherOffers();
 
-    List<OfferDTO> getUserOffers();
+    List<Offer> getUserOffers();
 
-    List<OfferDTO> getUserBoughtOffers();
+    List<Offer> getUserBoughtOffers();
+
+    void addOffer(OfferDTO offerDTO);
+
+    void buyOffer(Long id);
+
+    void deleteOffer(Long id);
 }

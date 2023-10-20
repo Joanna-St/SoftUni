@@ -17,6 +17,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CurrentUser currentUser;
+
     @Override
     public void registerUser(UserRegistrationDTO userRegistrationDTO) {
         currentUser.login(userRepository.save(map(userRegistrationDTO)));

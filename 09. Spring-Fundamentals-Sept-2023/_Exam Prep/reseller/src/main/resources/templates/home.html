@@ -25,7 +25,10 @@
                                 <td class="bg-primary" style="width: 15%"
                                     th:text="${offer.price} + ' €'"></td>
                                 <td th:text="${offer.description}">{description}</td>
-                                <td style="width: 15%"><a class="btn-danger btn" href="/">Remove</a>
+                                <td style="width: 15%"><form th:action="'/offer/remove/' + ${offer.id}" th:method="DELETE">
+                                    <input type="hidden" name="_method" value="delete" />
+                                    <button type="submit" class="btn btn-danger" style="border: none;">Remove</button>
+                                </form>
                                 </td>
                             </tr>
                         </table>
@@ -52,19 +55,20 @@
                 </div>
             </div>
 
+<!--            All Offers-------------------------------------------------------------->
             <div class="col-6 mt-1 mb-1">
                 <h3 class="mySticky bg-gray text-dark  mb-0 mt-2">All Other Offers</h3>
                 <h6 class="mySticky bg-gray text-dark  mb-0 mt-0"
                     th:text="${allOffers.size()} + ' Offers'"></h6>
                 <div class="bg-dark rounded m-auto" style="height: 67vh; overflow: auto">
-                    <div>
-                        <div th:each="offer: ${allOffers}">
+                    <div th:each="user: ${allUsers}">
+                        <div th:each="offer: ${user.getOffers()}">
                             <br>
                             <ul class="list-group list-group-horizontal text-dark">
                                 <li class="list-group-item">
                                     <table>
                                         <tr>
-                                            <td style="width: 35%" th:text="${offer.created.username} + ' sells:'"></td>
+                                            <td style="width: 35%" th:text="${user.username} + ' sells:'"></td>
                                             <td th:text="${offer.description}"></td>
                                         </tr>
                                     </table>
@@ -72,11 +76,15 @@
                                 <li class="list-group-item bg-gray">
                                     <table>
                                         <tr>
-                                            <td style="width: 40%" th:text="'Condition: '${offer.condition.conditionName}"></td>
-                                            <td class="text-primary" style=" width: 40%" th:text="'Price: '${offer.price} + ' €'"></td>
+                                            <td style="width: 40%" th:text="'Condition: ' + ${offer.condition.conditionName}"></td>
+                                            <td class="text-primary" style=" width: 40%" th:text="'Price: ' + ${offer.price} + ' €'"></td>
                                             <td>
-                                                <a class="ml-3 text-danger" href="/">
-                                                    <img src="/img/buy.png" height="35px"></a>
+                                                <form th:action="'/offer/buy/' + ${offer.id}" method="POST">
+                                                    <input type="hidden" name="data" value="some_data_if_needed" />
+                                                    <button type="submit" class="ml-3 text-danger" style="border: none;">
+                                                        <img src="/img/buy.png" height="35px">
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     </table>

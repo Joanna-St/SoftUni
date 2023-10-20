@@ -15,10 +15,10 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class ConditionInit implements CommandLineRunner {
     private final ConditionRepository conditionRepository;
-    
+
     @Override
     public void run(String... args) throws Exception {
-        if(conditionRepository.count() == 0) {
+        if (conditionRepository.count() == 0) {
             for (ConditionEnum conditionEnum : ConditionEnum.values()) {
                 Condition condition = new Condition(conditionEnum);
                 conditionRepository.save(condition);
