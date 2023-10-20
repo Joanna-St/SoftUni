@@ -9,6 +9,8 @@ import org.softuni.resellerApp.util.CurrentUser;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @AllArgsConstructor
 @Service
 public class UserRegistrationServiceImpl implements UserRegistrationService {
@@ -25,6 +27,8 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
         newUser.setUsername(userRegistrationDTO.username());
         newUser.setPassword(passwordEncoder.encode(userRegistrationDTO.password()));
         newUser.setEmail(userRegistrationDTO.email());
+        newUser.setOffers(new ArrayList<>());
+        newUser.setBoughtOffers(new ArrayList<>());
 
         return newUser;
     }

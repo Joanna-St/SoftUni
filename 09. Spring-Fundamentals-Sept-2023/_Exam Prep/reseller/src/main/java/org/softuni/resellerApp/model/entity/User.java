@@ -1,9 +1,6 @@
 package org.softuni.resellerApp.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -32,10 +29,10 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @OneToMany(targetEntity = Offer.class, mappedBy = "created")
+    @OneToMany(targetEntity = Offer.class, mappedBy = "created", fetch = FetchType.EAGER)
     private List<Offer> offers;
 
-    @OneToMany(targetEntity = Offer.class, mappedBy = "bought")
+    @OneToMany(targetEntity = Offer.class, mappedBy = "bought", fetch = FetchType.EAGER)
     private List<Offer> boughtOffers;
 
     public User() {

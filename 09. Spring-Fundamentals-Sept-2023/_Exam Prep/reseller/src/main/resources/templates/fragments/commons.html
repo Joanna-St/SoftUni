@@ -16,7 +16,7 @@
            th:href="${@currentUser.isLogged() ? '/home' : '/'}">Reseller App</a>
         <a class="nav-link text-primary active h5 text-stroke"
            th:if="${@currentUser.isLogged()}"
-           href="/">Add Offer</a>
+           href="/offer/add">Add Offer</a>
 
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav row">
