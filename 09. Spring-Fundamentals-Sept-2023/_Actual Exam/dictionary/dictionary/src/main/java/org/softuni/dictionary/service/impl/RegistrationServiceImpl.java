@@ -33,7 +33,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         }
 
         if (usernameEmailValidation.isEmpty()){
-            userRepository.save(map(userRegistrationDTO));
+            currentUser.login(userRepository.save(map(userRegistrationDTO)));
         }
 
         return usernameEmailValidation;
