@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
@@ -23,7 +23,7 @@ public class Word extends BaseEntity{
     private String example;
 
     @Column(nullable = false, name = "input_date")
-    private LocalDateTime inputDate;
+    private LocalDate inputDate;
 
     @ManyToOne
     private Language language;

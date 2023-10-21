@@ -22,7 +22,13 @@
                         <span th:text="'Example: ' + ${word.example}"></span>
                         <br>
                         <span th:text="'Added by: ' + ${word.addedBy.username} + ' on ' + ${#temporals.format(word.inputDate, 'yyyy-MM-dd')}"></span>
-                        <a class="ml-3 text-danger" href="/">Remove</a>
+                        <form th:action="'/words/remove/' + ${word.id}"
+                              th:method="DELETE"
+                              style="display: inline-flex;">
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" class="btn ml-3 text-danger"
+                                    style="border: none; background: none; padding: 0; margin: 0;font-weight: bold;">Remove</button>
+                        </form>
                     </div>
             </div>
 
@@ -38,7 +44,13 @@
                         <span th:text="'Example: ' + ${word.example}"></span>
                         <br>
                         <span th:text="'Added by: ' + ${word.addedBy.username} + ' on ' + ${#temporals.format(word.inputDate, 'yyyy-MM-dd')}"></span>
-                        <a class="ml-3 text-danger" href="/">Remove</a>
+                        <form th:action="'/words/remove/' + ${word.id}"
+                              th:method="DELETE"
+                              style="display: inline-flex;">
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" class="btn ml-3 text-danger"
+                                    style="border: none; background: none; padding: 0; margin: 0;font-weight: bold;">Remove</button>
+                        </form>
                     </div>
             </div>
         </div>
@@ -57,7 +69,13 @@
                         <span th:text="'Example: ' + ${word.example}"></span>
                         <br>
                         <span th:text="'Added by: ' + ${word.addedBy.username} + ' on ' + ${#temporals.format(word.inputDate, 'yyyy-MM-dd')}"></span>
-                        <a class="ml-3 text-danger" href="/">Remove</a>
+                        <form th:action="'/words/remove/' + ${word.id}"
+                              th:method="DELETE"
+                              style="display: inline-flex;">
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" class="btn ml-3 text-danger"
+                                    style="border: none; background: none; padding: 0; margin: 0;font-weight: bold;">Remove</button>
+                        </form>
                     </div>
             </div>
 
@@ -73,12 +91,21 @@
                         <span th:text="'Example: ' + ${word.example}"></span>
                         <br>
                         <span th:text="'Added by: ' + ${word.addedBy.username} + ' on ' + ${#temporals.format(word.inputDate, 'yyyy-MM-dd')}"></span>
-                        <a class="ml-3 text-danger" href="/">Remove</a>
+                        <form th:action="'/words/remove/' + ${word.id}"
+                              th:method="DELETE"
+                              style="display: inline-flex;">
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" class="btn ml-3 text-danger"
+                                    style="border: none; background: none; padding: 0; margin: 0;font-weight: bold;">Remove</button>
+                        </form>
                     </div>
             </div>
         </div>
-        <a href="/remove-all" class="btn btn-danger"
-           th:text="'Remove all ' + ${allWordsCount} + ' words'"></a>
+        <form th:action="'words/remove-all'" th:method="DELETE">
+            <input type="hidden" name="_method" value="delete" />
+            <button type="submit" class="btn btn-danger" style="border: none;"
+                    th:text="'Remove all ' + ${allWordsCount} + ' words'"></button>
+        </form>
     </div>
 </main>
 <footer th:replace="~{fragments/commons::footer}"></footer>
