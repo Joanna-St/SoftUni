@@ -52,7 +52,7 @@ public class UserController {
 
             if (loginService.userLogin(userLoginDTO)) {
 //              SUCCESS
-                return "redirect:/home";
+                return "redirect:/";
             } else {
 
 //              PASS ON INFO THAT THE LOGIN WAS UNSUCCESSFUL
@@ -101,14 +101,14 @@ public class UserController {
             }
 
             registrationService.registerUser(userRegistrationDTO);
-            return "redirect:/home";
+            return "redirect:/";
         } else {
             return "redirect:/";
         }
     }
 
     //    LOGOUT FUNCTIONALITY =========================================================================================
-    @GetMapping("/user/logout")
+    @GetMapping("/logout")
     public String logout() {
 
         if (currentUser.isLogged()) {
