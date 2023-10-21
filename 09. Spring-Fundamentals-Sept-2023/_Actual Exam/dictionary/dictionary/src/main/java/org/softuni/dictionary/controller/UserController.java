@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Map;
+
 @AllArgsConstructor
 @Controller
 @RequestMapping("/user")
@@ -40,35 +42,26 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@Valid UserLoginDTO userLoginDTO, BindingResult bindingResult, RedirectAttributes rAtt) {
-        if (!currentUser.isLogged()) {
-
-//          VALIDATIONS CHECK
-            if (bindingResult.hasErrors()) {
-                rAtt.addFlashAttribute("userLoginDTO", userLoginDTO);
-                rAtt.addFlashAttribute("org.springframework.validation.BindingResult.userLoginDTO", bindingResult);
-
-                return "redirect:/user/login";
-            }
-
-            if (loginService.userLogin(userLoginDTO)) {
-//              SUCCESS
-                return "redirect:/";
-            } else {
-
-//              PASS ON INFO THAT THE LOGIN WAS UNSUCCESSFUL
-                rAtt.addFlashAttribute("userLoginDTO", userLoginDTO);
-                rAtt.addFlashAttribute("loginError", Messages.WRONG_CREDENTIALS);
-                return "redirect:/user/login";
-            }
-        } else {
+//      LOGGED USER GETS REDIRECTED
+        if (currentUser.isLogged()) {
             return "redirect:/";
         }
+
+//      GUEST USER - VALIDATION CHECKS
+        if (bindingResult.hasErrors() || !loginService.userLogin(userLoginDTO)) {
+            rAtt.addFlashAttribute("userLoginDTO", userLoginDTO);
+            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.userLoginDTO", bindingResult);
+            rAtt.addFlashAttribute("loginError", Messages.WRONG_CREDENTIALS);
+            return "redirect:/user/login";
+        }
+
+//      LOGIN SUCCESS
+        return "redirect:/";
     }
 
     //    REGISTER FUNCTIONALITIES =====================================================================================
     @GetMapping("/register")
     public String register(Model model) {
-
         if (!currentUser.isLogged()) {
             if (!model.containsAttribute("userRegistrationDTO")) {
                 model.addAttribute("userRegistrationDTO",
@@ -83,34 +76,40 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@Valid UserRegistrationDTO userRegistrationDTO, BindingResult bindingResult, RedirectAttributes rAtt) {
-
-        if (!currentUser.isLogged()) {
-            String passwordMatchError = userRegistrationDTO.validatePasswordMatch();
-
-//          VALIDATIONS CHECK
-            if (bindingResult.hasErrors() || passwordMatchError != null) {
-
-//              MATCHING PASSWORDS CHECK - RETURN ERROR MESSAGE IF THEY DON'T
-                if (passwordMatchError != null) {
-                    rAtt.addFlashAttribute("passwordMatchError", passwordMatchError);
-                }
-
-                rAtt.addFlashAttribute("userRegistrationDTO", userRegistrationDTO);
-                rAtt.addFlashAttribute("org.springframework.validation.BindingResult.userRegistrationDTO", bindingResult);
-                return "redirect:/user/register";
-            }
-
-            registrationService.registerUser(userRegistrationDTO);
-            return "redirect:/";
-        } else {
+//      LOGGED USER GETS REDIRECTED
+        if (currentUser.isLogged()) {
             return "redirect:/";
         }
+
+//      GUEST USER - VALIDATION CHECKS
+//      Pass match
+        String passwordMatchError = userRegistrationDTO.validatePasswordMatch();
+//      Username/Email match
+        Map<String, String> registerUser = registrationService.registerUser(userRegistrationDTO);
+
+        if (bindingResult.hasErrors() || passwordMatchError != null || !registerUser.isEmpty()) {
+            if (passwordMatchError != null) {
+                rAtt.addFlashAttribute("passwordMatchError", passwordMatchError);
+            }
+
+            if (!registerUser.isEmpty()) {
+                rAtt.addFlashAttribute("userRegistrationDTO", userRegistrationDTO);
+                registerUser.forEach(rAtt::addFlashAttribute);
+            }
+
+            rAtt.addFlashAttribute("userRegistrationDTO", userRegistrationDTO);
+            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.userRegistrationDTO", bindingResult);
+            return "redirect:/user/register";
+        }
+
+//      DTO CORRECT
+        return "redirect:/";
+
     }
 
     //    LOGOUT FUNCTIONALITY =========================================================================================
     @GetMapping("/logout")
     public String logout() {
-
         if (currentUser.isLogged()) {
             loginService.userLogout();
         }

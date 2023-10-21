@@ -15,10 +15,11 @@ public record UserRegistrationDTO(@Size(min = 3, max = 20, message = Messages.LE
                                   @Size(min = 3, max = 20, message = Messages.LENGTH_PASSWORD)
                                   String confirmPassword) {
 
+
 //  MATCHING PASSWORDS CHECK
     public String validatePasswordMatch() {
         if (!password.equals(confirmPassword)) {
-            return "Passwords do not match.";
+            return Messages.PASSWORD_MISMATCH;
         }
         return null;
     }
